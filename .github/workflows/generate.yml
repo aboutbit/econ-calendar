@@ -26,10 +26,15 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install dependencies
+        working-directory: workflow/execution/econ-calendar
+        run: |
+          npm install
+          npx playwright install chromium --with-deps
+
       - name: Generate dashboard
         env:
           GITHUB_ACTIONS: 'true'
-          RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           ECON_OUTPUT_DIR: ${{ github.workspace }}/econ-calendar
         run: node workflow/execution/econ-calendar/index.js
