@@ -657,20 +657,83 @@
       color: #93c5fd;
     }
 
-    /* Responsive */
+    /* ── Responsive ─────────────────────────────────────── */
     @media (max-width: 768px) {
+      /* Layout */
       .container { padding: 12px; }
+      header { padding: 24px 12px; margin-bottom: 20px; }
       header h1 { font-size: 1.4em; }
+
+      /* Charts */
       .chart-container { height: 220px; }
-      table { font-size: 0.75em; }
+
+      /* Data tables: horizontal scroll */
+      .data-table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      table { font-size: 0.78em; }
       thead th, tbody td { padding: 6px 8px; }
+
+      /* FedWatch */
       .fw-body { grid-template-columns: 1fr; }
       .fw-mini-bar-wrap { width: 60px; }
+      .fw-rate-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+      /* AI section */
+      .ai-grid { grid-template-columns: 1fr; }
+      .ai-section-header { flex-wrap: wrap; }
+      .ai-timestamp { width: 100%; margin-left: 0; margin-top: 4px; }
+
+      /* Calendar */
       .cal-months-wrap { grid-template-columns: 1fr; }
       .cal-cell { min-height: 36px; }
-      .detail-modal-box { padding: 16px; }
+
+      /* Indicator sections */
+      .indicator-section { padding: 16px; }
+
+      /* Detail modal: bottom-sheet style */
+      .detail-modal-overlay { padding: 0; align-items: flex-end; }
+      .detail-modal-box {
+        border-radius: 16px 16px 0 0;
+        max-height: 90vh;
+        padding: 16px;
+        max-width: 100%;
+      }
       .detail-chart-wrap { height: 280px; }
       .range-btn { padding: 5px 12px; font-size: 0.8em; }
+      .range-btns-row { gap: 6px; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 8px; }
+      header { padding: 16px 8px; }
+      header h1 { font-size: 1.2em; }
+      header p { font-size: 0.82em; }
+
+      /* TOC */
+      .toc { padding: 16px 12px; }
+      .toc .toc-cat ul { gap: 4px 10px; }
+
+      /* FedWatch */
+      .fedwatch-widget { padding: 16px 12px; }
+      .fw-title { font-size: 1em; }
+      .fw-meeting-date { font-size: 1.1em; }
+      .fw-meeting-countdown { font-size: 1.3em; }
+      .fw-prob-row { grid-template-columns: 36px 1fr 44px; gap: 6px; }
+
+      /* Calendar */
+      .cal-section { padding: 16px 10px; }
+      .cal-month { padding: 10px 6px; }
+      .cal-cell { min-height: 30px; padding: 2px 1px; }
+      .cal-day-num { font-size: 0.65em; }
+      .cal-dot { width: 5px; height: 5px; }
+      .dot-fomc { width: 6px; height: 6px; }
+
+      /* Indicator sections */
+      .indicator-section { padding: 14px 10px; }
+      .chart-container { height: 200px; }
+
+      /* Detail modal */
+      .detail-chart-wrap { height: 240px; }
+      .range-btn { padding: 4px 9px; font-size: 0.78em; }
     }
   </style>
 </head>
@@ -679,7 +742,7 @@
     <header>
       <h1>미국 주요 경제지표 대시보드</h1>
       <p>US 3-Star Economic Indicators &mdash; 최근 2년 데이터</p>
-      <p style="margin-top:4px; font-size:0.8em;">생성일: 2026년 2월 28일 오후 02:25</p>
+      <p style="margin-top:4px; font-size:0.8em;">생성일: 2026년 2월 28일 오후 02:47</p>
     </header>
 
     
@@ -729,7 +792,7 @@
       </div>
 
       <!-- 세부 금리 확률 테이블 -->
-      <table class="fw-rate-table">
+      <div class="fw-rate-table-wrap"><table class="fw-rate-table">
         <thead><tr><th>목표 금리 (bps)</th><th>비율</th><th>현재 확률</th></tr></thead>
         <tbody>
           
@@ -754,8 +817,8 @@
               </td>
             </tr>
         </tbody>
-      </table>
-      <p class="fw-timestamp">데이터 기준: Data as of 28 Feb 2026 08:13:02 CT &nbsp;|&nbsp; <a href="https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html" target="_blank" rel="noopener">CME FedWatch ↗</a></p>
+      </table></div>
+      <p class="fw-timestamp">데이터 기준: Data as of 28 Feb 2026 08:33:12 CT &nbsp;|&nbsp; <a href="https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html" target="_blank" rel="noopener">CME FedWatch ↗</a></p>
     </section>
 
     
@@ -763,29 +826,29 @@
       <div class="ai-section-header">
         <h2>🤖 AI 종합평가</h2>
         <span class="ai-badge">gemini-2.5-flash</span>
-        <span class="ai-timestamp">생성: 2026. 2. 28. 오후 2:25:05</span>
+        <span class="ai-timestamp">생성: 2026. 2. 28. 오후 2:47:00</span>
       </div>
       <div class="ai-grid">
         
       <div class="ai-card">
         <div class="ai-card-title">📊 경기 종합 판단</div>
-        <div class="ai-card-body">최근 경제 지표들을 종합해 볼 때, 미국 경제는 완만한 성장세를 유지하고 있으나, 성장 모멘텀은 다소 둔화되고 있는 것으로 판단됩니다. 2026년 2월 GDP 성장률(전분기비)은 1.4%로 이전 4.4% 대비 크게 하락하며 시장 예측치 2.8%를 하회했고, 소매판매(전월비)는 0.0%로 정체되어 소비 심리가 위축될 가능성을 시사합니다. 다만, ISM 제조업 PMI가 52.6으로 48.5의 예측치를 상회하며 확장 국면으로 전환되었고, ISM 비제조업 PMI도 53.8로 견조한 수준을 유지하고 있어 경기 침체 우려는 제한적입니다.</div>
+        <div class="ai-card-body">최근 경제 지표들을 종합해 볼 때, 미국 경제는 완만한 성장세를 유지하고 있으나, 성장 모멘텀은 다소 둔화되는 양상입니다. 2026년 2월 GDP 성장률(전분기비)이 1.4%로 이전 4.4% 대비 크게 하락하며 시장 예측치 2.8%에도 미치지 못해 경기 둔화 우려가 커지고 있습니다. 다만, ISM 제조업 PMI가 52.6으로 긍정적인 반등을 보였고, 서비스업 PMI도 53.8로 견조함을 유지하며 제조업 부문의 회복 가능성을 시사하고 있습니다.</div>
       </div>
       <div class="ai-card">
         <div class="ai-card-title">📈 인플레이션 추세</div>
-        <div class="ai-card-body">인플레이션은 점진적으로 둔화되고 있으나, 여전히 연준의 목표치에 도달하기까지는 시간이 필요해 보입니다. 소비자물가지수(전년비)는 2.4%로 이전 2.7% 대비 하락하며 긍정적인 신호를 보였지만, 생산자물가지수(전월비)는 0.5%로 예측치 0.3%를 상회하며 상승 압력이 남아있음을 보여주었습니다. 특히 근원 PCE 물가지수(전월비)가 0.4%로 예측치 0.3%를 넘어섰다는 점은 서비스 물가 등 근원 인플레이션의 하방 경직성이 여전히 높다는 것을 의미합니다.</div>
+        <div class="ai-card-body">인플레이션은 점진적으로 완화되는 추세이나, 여전히 연준의 목표치에 근접하기 위한 노력이 필요해 보입니다. 2026년 2월 소비자물가지수(전년비)는 2.4%로 전월 2.7% 대비 하락하며 시장 예측치 2.5%보다도 낮게 나왔습니다. 그러나 생산자물가지수(전월비)가 0.5%로 예측치 0.3%를 상회하고, 근원 PCE 물가지수(전월비) 또한 0.4%로 예측치 0.3%를 넘어섰다는 점은 물가 하방 압력이 아직 견고하지 않음을 보여줍니다.</div>
       </div>
       <div class="ai-card">
         <div class="ai-card-title">👷 고용 시장</div>
-        <div class="ai-card-body">고용 시장은 여전히 견조하지만, 일부 둔화 조짐이 관찰됩니다. 2026년 2월 비농업 고용은 130K로 예측치 66K를 크게 상회하며 강한 고용 수요를 보여주었으나, ADP 비농업 고용 변화는 22K로 예측치 46K를 하회했습니다. 실업률은 4.3%로 이전 4.4% 대비 소폭 하락하며 완전 고용에 가까운 수준을 유지하고 있지만, JOLTS 구인건수가 6.54M으로 예측치 7.25M을 크게 하회하며 구인난이 완화되고 있음을 시사합니다. 신규 실업수당 청구건수는 212K로 예측치 217K를 하회하며 안정적인 수준을 유지하고 있습니다.</div>
+        <div class="ai-card-body">고용 시장은 여전히 견조하지만, 일부 지표에서 둔화 조짐이 나타나고 있습니다. 2026년 2월 비농업 고용은 130K로 예측치 66K를 크게 상회하며 강한 고용 수요를 보여주었으나, JOLTS 구인건수는 6.54M으로 예측치 7.25M을 하회하며 구인난이 다소 완화되고 있음을 시사합니다. 실업률은 4.3%로 전월 4.4% 대비 소폭 하락하며 낮은 수준을 유지하고 있어, 고용 시장의 견고함은 유지되고 있습니다.</div>
       </div>
       <div class="ai-card">
         <div class="ai-card-title">🏦 연준 정책 방향</div>
-        <div class="ai-card-body">FedWatch에 따르면 다음 FOMC는 2026년 3월 18일이며, 현재 기준금리는 350-375bp입니다. 최근 연준은 2025년 9월부터 기준금리를 4.50%에서 3.75%로 점진적으로 인하해왔습니다. 현���까지의 지표를 종합해 볼 때, 연준은 인플레이션 둔화와 고용 시장의 견조함을 바탕으로 금리 인하 기조를 유지할 가능성이 높습니다. 그러나 근원 인플레이션의 하방 경직성과 예상치를 상회하는 생산자물가지수는 연준이 금리 인하 속도를 조절하거나 신중하게 접근할 필요성을 제기할 수 있습니다.</div>
+        <div class="ai-card-body">현재 기준금리가 350-375bp인 상황에서, FedWatch는 다음 FOMC(2026년 3월 18일)에서 금리 동결 가능성을 높게 보고 있습니다. 인플레이션이 점진적으로 완화되고 있지만, 생산자물가지수와 근원 PCE 물가지수가 예상치를 상회하는 등 물가 압력이 완전히 해소되지 않았습니다. 또한, 고용 시장이 여전히 견조한 모습을 보이고 있어 연준은 금리 인하에 신중한 태도를 유지할 것으로 예상됩니다.</div>
       </div>
       <div class="ai-card risk">
         <div class="ai-card-title">⚠️ 주요 리스크</div>
-        <div class="ai-card-body">향후 미국 경제의 주요 리스크는 크게 두 가지로 볼 수 있습니다. 첫째, 예상보다 높은 근원 인플레이션이 지속될 경우 연준의 금리 인하 기대감이 약화될 수 있습니다. 특히 생산자물가지수의 예상치 상회는 향후 소비자물가에 전가될 가능성을 내포하고 있습니다. 둘째, GDP 성장률의 급격한 둔화와 소매판매 정체는 소비 심리 위축과 경기 침체로 이어질 수 있는 잠재적 위험 요인입니다. 연준은 이러한 리스크들을 면밀히 주시하며 데이터에 기반한 신중한 정책 결정을 내릴 것으로 예상됩니다.</div>
+        <div class="ai-card-body">가장 큰 리스크는 GDP 성장률의 급격한 둔화입니다. 2026년 2월 GDP 성장률이 1.4%로 크게 하락한 것은 경기 침체 가능성을 배제할 수 없게 만듭니다. 또한, 생산자물가지수 및 근원 PCE 물가지수의 예상치 상회는 인플레이션이 다시 가속화될 수 있다는 우려를 낳습니다. 이러한 복합적인 요인들은 연준의 통화 정책 결정에 상당한 불확실성을 더하며, 시장 변동성을 확대시킬 수 있습니다.</div>
       </div>
       </div>
     </section>
