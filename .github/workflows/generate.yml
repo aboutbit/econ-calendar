@@ -26,11 +26,37 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies
+      # ── 캐시: node_modules ──────────────────────────────
+      - uses: actions/cache@v4
+        id: npm-cache
+        with:
+          path: workflow/execution/econ-calendar/node_modules
+          key: npm-${{ runner.os }}-${{ hashFiles('workflow/execution/econ-calendar/package.json') }}
+
+      # ── 캐시: Playwright 브라우저 바이너리 ───────────────
+      - uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('workflow/execution/econ-calendar/package.json') }}
+
+      # npm: 캐시 미스 시에만 설치
+      - name: Install npm packages
+        if: steps.npm-cache.outputs.cache-hit != 'true'
         working-directory: workflow/execution/econ-calendar
-        run: |
-          npm install
-          npx playwright install chromium --with-deps
+        run: npm install
+
+      # Playwright 브라우저: 캐시 미스 시 전체 설치 (바이너리 + OS 의존성)
+      - name: Install Playwright + system deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        working-directory: workflow/execution/econ-calendar
+        run: npx playwright install chromium --with-deps
+
+      # Playwright 브라우저: 캐시 히트 시 OS 의존성만 설치 (바이너리는 캐시에서)
+      - name: Install Playwright system deps only
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        working-directory: workflow/execution/econ-calendar
+        run: npx playwright install-deps chromium
 
       - name: Generate dashboard
         env:
