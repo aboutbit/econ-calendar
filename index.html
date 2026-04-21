@@ -742,7 +742,7 @@
     <header>
       <h1>미국 주요 경제지표 대시보드</h1>
       <p>US 3-Star Economic Indicators &mdash; 최근 2년 데이터</p>
-      <p style="margin-top:4px; font-size:0.8em;">생성일: 2026년 4월 20일 PM 09:48</p>
+      <p style="margin-top:4px; font-size:0.8em;">생성일: 2026년 4월 21일 PM 09:47</p>
     </header>
 
     
@@ -757,7 +757,7 @@
         <div class="fw-meeting-card">
           <div class="fw-meeting-label">다음 FOMC 회의</div>
           <div class="fw-meeting-date">2026년 4월 29일</div>
-          <div class="fw-meeting-countdown">D-9</div>
+          <div class="fw-meeting-countdown">D-8</div>
           <div class="fw-current-rate-display">현재 금리: <strong>3.50%–3.75%</strong></div>
           <div class="fw-upcoming">
         <span class="fw-upcoming-label">이후 일정:</span>
@@ -818,7 +818,7 @@
             </tr>
         </tbody>
       </table></div>
-      <p class="fw-timestamp">데이터 기준: Data as of 20 Apr 2026 04:30:04 CT &nbsp;|&nbsp; <a href="https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html" target="_blank" rel="noopener">CME FedWatch ↗</a></p>
+      <p class="fw-timestamp">데이터 기준: Data as of 21 Apr 2026 04:30:04 CT &nbsp;|&nbsp; <a href="https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html" target="_blank" rel="noopener">CME FedWatch ↗</a></p>
     </section>
 
     
@@ -1132,18 +1132,18 @@
         <span class="cal-day-num">19</span>
         <div class="cal-dots"></div>
         
-      </div><div class="cal-cell cal-today" data-date="2026-04-20">
+      </div><div class="cal-cell" data-date="2026-04-20">
         <span class="cal-day-num">20</span>
         <div class="cal-dots"></div>
         
-      </div><div class="cal-cell cal-future cal-has-upcoming" data-date="2026-04-21">
+      </div><div class="cal-cell cal-today cal-has-events" data-date="2026-04-21">
         <span class="cal-day-num">21</span>
-        <div class="cal-dots"><span class="cal-dot dot-upcoming" title="발표 예정: 소매판매 (전월비)"></span></div>
-        <div class="cal-tooltip"><div class="cal-tooltip-date">4월 21일</div><div class="cal-tooltip-item upcoming">
+        <div class="cal-dots"><span class="cal-dot dot-beat"></span></div>
+        <div class="cal-tooltip"><div class="cal-tooltip-date">4월 21일</div><div class="cal-tooltip-item beat">
             <span class="cal-tooltip-name">소매판매 (전월비)</span>
+            <span class="cal-tooltip-val">1.7%</span>
             
             <span class="cal-tooltip-fc">예측 1.4%</span>
-            
           </div></div>
       </div><div class="cal-cell cal-future" data-date="2026-04-22">
         <span class="cal-day-num">22</span>
@@ -1841,6 +1841,11 @@
           </tr>
         </thead>
         <tbody><tr>
+      <td>Apr 21, 2026</td>
+      <td class="val-beat">1.7%</td>
+      <td>1.4%</td>
+      <td>0.7%</td>
+    </tr><tr>
       <td>Apr 1, 2026</td>
       <td class="val-beat">0.6%</td>
       <td>0.5%</td>
@@ -2744,11 +2749,11 @@
   new Chart(document.getElementById('chart-19'), {
     type: 'line',
     data: {
-      labels: ["Apr 1, 2026"],
+      labels: ["Apr 1, 2026","Apr 21, 2026"],
       datasets: [
         {
           label: '실제값',
-          data: [0.6],
+          data: [0.6,1.7],
           borderColor: '#3b82f6',
           backgroundColor: 'rgba(59,130,246,0.1)',
           fill: false,
@@ -2759,7 +2764,7 @@
         },
         {
           label: '예측값',
-          data: [0.5],
+          data: [0.5,1.4],
           borderColor: '#94a3b8',
           borderDash: [5, 5],
           fill: false,
@@ -2781,7 +2786,7 @@
             afterBody: function(items) {
               const idx = items[0]?.dataIndex;
               if (idx == null) return '';
-              const row = [{"date":"Apr 1, 2026","actual":"0.6%","forecast":"0.5%","previous":"-0.1%"}][idx];
+              const row = [{"date":"Apr 1, 2026","actual":"0.6%","forecast":"0.5%","previous":"-0.1%"},{"date":"Apr 21, 2026","actual":"1.7%","forecast":"1.4%","previous":"0.7%"}][idx];
               return row?.previous ? '이전값: ' + row.previous : '';
             }
           }
@@ -2871,7 +2876,7 @@
     
 
     // ─── Detail Chart Modal ───────────────────────────────────────────
-    const ALL_IND_DATA = {"1":{"nameKo":"ADP 비농업 고용 변화","nameEn":"ADP Nonfarm Employment Change","chartStyle":null,"history":[{"date":"Apr 1, 2026","actual":"62K","forecast":"41K","previous":"66K"}]},"48":{"nameKo":"CB 소비자신뢰지수","nameEn":"CB Consumer Confidence","chartStyle":null,"history":[]},"56":{"nameKo":"근원 소비자물가지수 (전월비)","nameEn":"Core CPI (MoM)","chartStyle":null,"history":[{"date":"Apr 10, 2026","actual":"0.2%","forecast":"0.3%","previous":"0.2%"}]},"61":{"nameKo":"근원 PCE 물가지수 (전월비)","nameEn":"Core PCE Price Index (MoM)","chartStyle":null,"history":[{"date":"Apr 9, 2026","actual":"0.4%","forecast":"0.4%","previous":"0.4%"}]},"69":{"nameKo":"소비자물가지수 (전월비)","nameEn":"CPI (MoM)","chartStyle":null,"history":[{"date":"Apr 10, 2026","actual":"0.9%","forecast":"1.0%","previous":"0.3%"}]},"168":{"nameKo":"Fed 금리 결정","nameEn":"Fed Interest Rate Decision","chartStyle":"stepped","history":[]},"173":{"nameKo":"ISM 제조업 PMI","nameEn":"ISM Manufacturing PMI","chartStyle":null,"history":[{"date":"Apr 1, 2026","actual":"52.7","forecast":"52.3","previous":"52.4"}]},"176":{"nameKo":"ISM 비제조업 PMI","nameEn":"ISM Non-Manufacturing PMI","chartStyle":null,"history":[{"date":"Apr 6, 2026","actual":"54.0","forecast":"54.8","previous":"56.1"}]},"222":{"nameKo":"신규주택판매","nameEn":"New Home Sales","chartStyle":null,"history":[]},"227":{"nameKo":"비농업 고용","nameEn":"Nonfarm Payrolls","chartStyle":null,"history":[{"date":"Apr 3, 2026","actual":"178K","forecast":"65K","previous":"-133K"}]},"238":{"nameKo":"생산자물가지수 (전월비)","nameEn":"PPI (MoM)","chartStyle":null,"history":[{"date":"Apr 14, 2026","actual":"0.5%","forecast":"1.1%","previous":"0.5%"}]},"256":{"nameKo":"소매판매 (전월비)","nameEn":"Retail Sales (MoM)","chartStyle":null,"history":[{"date":"Apr 1, 2026","actual":"0.6%","forecast":"0.5%","previous":"-0.1%"}]},"286":{"nameKo":"무역수지","nameEn":"Trade Balance","chartStyle":null,"history":[]},"294":{"nameKo":"신규 실업수당 청구건수","nameEn":"Initial Jobless Claims","chartStyle":null,"history":[{"date":"Apr 2, 2026","actual":"202K","forecast":"212K","previous":"211K"},{"date":"Apr 9, 2026","actual":"219K","forecast":"210K","previous":"203K"},{"date":"Apr 16, 2026","actual":"207K","forecast":"213K","previous":"218K"}]},"300":{"nameKo":"실업률","nameEn":"Unemployment Rate","chartStyle":null,"history":[{"date":"Apr 3, 2026","actual":"4.3%","forecast":"4.4%","previous":"4.4%"}]},"320":{"nameKo":"미시간 소비자심리지수","nameEn":"Michigan Consumer Sentiment","chartStyle":null,"history":[{"date":"Apr 10, 2026","actual":"47.6","forecast":"51.6","previous":"53.3"}]},"343":{"nameKo":"GDP 물가지수 (전분기비)","nameEn":"GDP Price Index (QoQ)","chartStyle":null,"history":[{"date":"Apr 9, 2026","actual":"3.7%","forecast":"3.8%","previous":"3.8%"}]},"375":{"nameKo":"GDP 성장률 (전분기비)","nameEn":"GDP (QoQ)","chartStyle":null,"history":[{"date":"Apr 9, 2026","actual":"0.5%","forecast":"0.7%","previous":"0.7%"}]},"733":{"nameKo":"소비자물가지수 (전년비)","nameEn":"CPI (YoY)","chartStyle":null,"history":[{"date":"Apr 10, 2026","actual":"3.3%","forecast":"3.4%","previous":"2.4%"}]},"736":{"nameKo":"근원 소비자물가지수 (전년비)","nameEn":"Core CPI (YoY)","chartStyle":null,"history":[]},"829":{"nameKo":"S&P 제조업 PMI","nameEn":"S&P Global Manufacturing PMI","chartStyle":null,"history":[]},"830":{"nameKo":"S&P 서비스업 PMI","nameEn":"S&P Global Services PMI","chartStyle":null,"history":[]},"891":{"nameKo":"기존주택판매","nameEn":"Existing Home Sales","chartStyle":null,"history":[]},"906":{"nameKo":"근원 PCE 물가지수 (전년비)","nameEn":"Core PCE Price Index (YoY)","chartStyle":null,"history":[]},"1057":{"nameKo":"JOLTS 구인건수","nameEn":"JOLTs Job Openings","chartStyle":null,"history":[]}};
+    const ALL_IND_DATA = {"1":{"nameKo":"ADP 비농업 고용 변화","nameEn":"ADP Nonfarm Employment Change","chartStyle":null,"history":[{"date":"Apr 1, 2026","actual":"62K","forecast":"41K","previous":"66K"}]},"48":{"nameKo":"CB 소비자신뢰지수","nameEn":"CB Consumer Confidence","chartStyle":null,"history":[]},"56":{"nameKo":"근원 소비자물가지수 (전월비)","nameEn":"Core CPI (MoM)","chartStyle":null,"history":[{"date":"Apr 10, 2026","actual":"0.2%","forecast":"0.3%","previous":"0.2%"}]},"61":{"nameKo":"근원 PCE 물가지수 (전월비)","nameEn":"Core PCE Price Index (MoM)","chartStyle":null,"history":[{"date":"Apr 9, 2026","actual":"0.4%","forecast":"0.4%","previous":"0.4%"}]},"69":{"nameKo":"소비자물가지수 (전월비)","nameEn":"CPI (MoM)","chartStyle":null,"history":[{"date":"Apr 10, 2026","actual":"0.9%","forecast":"1.0%","previous":"0.3%"}]},"168":{"nameKo":"Fed 금리 결정","nameEn":"Fed Interest Rate Decision","chartStyle":"stepped","history":[]},"173":{"nameKo":"ISM 제조업 PMI","nameEn":"ISM Manufacturing PMI","chartStyle":null,"history":[{"date":"Apr 1, 2026","actual":"52.7","forecast":"52.3","previous":"52.4"}]},"176":{"nameKo":"ISM 비제조업 PMI","nameEn":"ISM Non-Manufacturing PMI","chartStyle":null,"history":[{"date":"Apr 6, 2026","actual":"54.0","forecast":"54.8","previous":"56.1"}]},"222":{"nameKo":"신규주택판매","nameEn":"New Home Sales","chartStyle":null,"history":[]},"227":{"nameKo":"비농업 고용","nameEn":"Nonfarm Payrolls","chartStyle":null,"history":[{"date":"Apr 3, 2026","actual":"178K","forecast":"65K","previous":"-133K"}]},"238":{"nameKo":"생산자물가지수 (전월비)","nameEn":"PPI (MoM)","chartStyle":null,"history":[{"date":"Apr 14, 2026","actual":"0.5%","forecast":"1.1%","previous":"0.5%"}]},"256":{"nameKo":"소매판매 (전월비)","nameEn":"Retail Sales (MoM)","chartStyle":null,"history":[{"date":"Apr 1, 2026","actual":"0.6%","forecast":"0.5%","previous":"-0.1%"},{"date":"Apr 21, 2026","actual":"1.7%","forecast":"1.4%","previous":"0.7%"}]},"286":{"nameKo":"무역수지","nameEn":"Trade Balance","chartStyle":null,"history":[]},"294":{"nameKo":"신규 실업수당 청구건수","nameEn":"Initial Jobless Claims","chartStyle":null,"history":[{"date":"Apr 2, 2026","actual":"202K","forecast":"212K","previous":"211K"},{"date":"Apr 9, 2026","actual":"219K","forecast":"210K","previous":"203K"},{"date":"Apr 16, 2026","actual":"207K","forecast":"213K","previous":"218K"}]},"300":{"nameKo":"실업률","nameEn":"Unemployment Rate","chartStyle":null,"history":[{"date":"Apr 3, 2026","actual":"4.3%","forecast":"4.4%","previous":"4.4%"}]},"320":{"nameKo":"미시간 소비자심리지수","nameEn":"Michigan Consumer Sentiment","chartStyle":null,"history":[{"date":"Apr 10, 2026","actual":"47.6","forecast":"51.6","previous":"53.3"}]},"343":{"nameKo":"GDP 물가지수 (전분기비)","nameEn":"GDP Price Index (QoQ)","chartStyle":null,"history":[{"date":"Apr 9, 2026","actual":"3.7%","forecast":"3.8%","previous":"3.8%"}]},"375":{"nameKo":"GDP 성장률 (전분기비)","nameEn":"GDP (QoQ)","chartStyle":null,"history":[{"date":"Apr 9, 2026","actual":"0.5%","forecast":"0.7%","previous":"0.7%"}]},"733":{"nameKo":"소비자물가지수 (전년비)","nameEn":"CPI (YoY)","chartStyle":null,"history":[{"date":"Apr 10, 2026","actual":"3.3%","forecast":"3.4%","previous":"2.4%"}]},"736":{"nameKo":"근원 소비자물가지수 (전년비)","nameEn":"Core CPI (YoY)","chartStyle":null,"history":[]},"829":{"nameKo":"S&P 제조업 PMI","nameEn":"S&P Global Manufacturing PMI","chartStyle":null,"history":[]},"830":{"nameKo":"S&P 서비스업 PMI","nameEn":"S&P Global Services PMI","chartStyle":null,"history":[]},"891":{"nameKo":"기존주택판매","nameEn":"Existing Home Sales","chartStyle":null,"history":[]},"906":{"nameKo":"근원 PCE 물가지수 (전년비)","nameEn":"Core PCE Price Index (YoY)","chartStyle":null,"history":[]},"1057":{"nameKo":"JOLTS 구인건수","nameEn":"JOLTs Job Openings","chartStyle":null,"history":[]}};
     const FRED_EMBEDDED = {};
     const FRED_CFG = {"56":{"seriesId":"CPILFESL","units":"pch","label":"근원 CPI 전월비 (%)"},"61":{"seriesId":"PCEPILFE","units":"pch","label":"근원 PCE 전월비 (%)"},"69":{"seriesId":"CPIAUCSL","units":"pch","label":"CPI 전월비 (%)"},"168":{"seriesId":"FEDFUNDS","units":"lin","label":"기준금리 (%)"},"222":{"seriesId":"HSN1F","units":"lin","label":"신규주택 판매 (연율, 천채)"},"227":{"seriesId":"PAYEMS","units":"lin","label":"비농업 고용자 수 (천명)"},"238":{"seriesId":"PPIACO","units":"pch","label":"PPI 전월비 (%)"},"256":{"seriesId":"RSAFS","units":"pch","label":"소매판매 전월비 (%)"},"286":{"seriesId":"BOPGSTB","units":"lin","label":"무역수지 (백만달러)"},"294":{"seriesId":"ICSA","units":"lin","label":"신규실업수당 청구 (천건)"},"300":{"seriesId":"UNRATE","units":"lin","label":"실업률 (%)"},"320":{"seriesId":"UMCSENT","units":"lin","label":"미시간 소비자심리지수"},"343":{"seriesId":"GDPDEF","units":"pch","label":"GDP 디플레이터 변화 (%)"},"375":{"seriesId":"A191RL1Q225SBEA","units":"lin","label":"실질 GDP 성장률 (연율, %)"},"733":{"seriesId":"CPIAUCSL","units":"pc1","label":"CPI 전년비 (%)"},"736":{"seriesId":"CPILFESL","units":"pc1","label":"근원 CPI 전년비 (%)"},"891":{"seriesId":"EXHOSLUSM495S","units":"lin","label":"기존주택 판매 (연율, 백만채)"},"906":{"seriesId":"PCEPILFE","units":"pc1","label":"근원 PCE 전년비 (%)"},"1057":{"seriesId":"JTSJOL","units":"lin","label":"구인 건수 (천건)"}};
 
